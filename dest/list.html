@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style>
+    body {
+      background-color: #3949ab;
+      font-family: Helvetica, sans-serif;
+      font-size: 18px;
+      color: #272727;
+    }
+
+    ul {
+      list-style: none;
+      width: 240px;
+      margin: 100px auto 0;
+      background-color: #fff;
+      padding: 6px 0;
+      border-radius: 2px;
+    }
+
+    li {
+      display: block;
+      padding: 20px 30px;
+    }
+
+    li:last-child {
+      border-bottom: none;
+    }
+
+    .strike {
+      text-decoration: line-through;
+      color: #aaa;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div id="app">
+    <ul>
+      <li v-for="bear in bears" :class="{ 'strike': bear.status }">{{ bear.name }}</li>
+    </ul>
+  </div>
+
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/vue/1.0.25/vue.min.js"></script>
+  <script>
+    new Vue({
+      el: "#app",
+      data: {
+        bears: [
+          {
+            name: 'гризли',
+            status: false
+          },
+          {
+            name: 'белый',
+            status: false
+          },
+          {
+            name: 'панда',
+            status: true
+          },
+          {
+            name: 'губач',
+            status: false
+          },
+        ]
+      }
+    })
+  </script>
+</body>
+
+</html>

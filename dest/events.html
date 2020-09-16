@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+
+  <style>
+    #app {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div id="app">
+
+    <input type="text" v-model="message" @keyup.13="onClick">
+
+    <form action="">
+      <button v-on:click.prevent="onClick">button</button>
+    </form>
+
+  </div>
+
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/vue/1.0.25/vue.min.js"></script>
+  <script>
+    new Vue({
+      el: "#app",
+      data: {
+        message: ''
+      },
+      methods: {
+        onClick: function () {
+
+          console.log(this.message)
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>
