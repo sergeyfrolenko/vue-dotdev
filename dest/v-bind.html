@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    .active {
+      color: brown;
+    }
+
+    .activeClass {
+      color: green;
+    }
+
+    .errorClass {
+      color: red;
+    }
+  </style>
+  <title>v-bind</title>
+</head>
+
+<body>
+  <p>
+    Часто возникает необходимость динамически изменять CSS-классы и inline-стили элементов в зависимости от состояния
+    приложения. Поскольку и то и другое атрибуты, мы можем использовать v-bind: необходимо лишь вычислить итоговую
+    строку при помощи выражения. Впрочем, заниматься конкатенацией строк неудобно, это может привести к ошибкам. К
+    счастью, Vue предоставляет дополнительные возможности директивы v-bind для работы с class и style. Эти атрибуты
+    кроме строковых значений могут принимать массивы или объекты.
+  </p>
+  <p>
+    Для переключения классов в массиве, в зависимости от некоторого условия, можно использовать условный оператор в
+    тернарной форме:
+  </p>
+
+  <div id="app">
+    <div v-bind:class="{ active: isActive }">
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem dolore dolor libero quas debitis. Deserunt
+        consequatur doloribus incidunt velit iusto molestiae, autem qui quisquam in omnis libero expedita nisi beatae!
+      </p>
+    </div>
+
+    <div v-bind:class="[isActive2 ? 'activeClass' : '', 'errorClass']">
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem dolore dolor libero quas debitis. Deserunt
+        consequatur doloribus incidunt velit iusto molestiae, autem qui quisquam in omnis libero expedita nisi beatae!
+      </p>
+    </div>
+
+    <div v-bind:class="[{ active: isActive3 }, 'errorClass']">
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem dolore dolor libero quas debitis. Deserunt
+        consequatur doloribus incidunt velit iusto molestiae, autem qui quisquam in omnis libero expedita nisi beatae!
+      </p>
+    </div>
+
+
+    <select name="" id="" v-model="isActive4">
+      <option value="true" selected="selected">true</option>
+      <option value="false">false</option>
+    </select>
+    <div v-bind:class="[isActive4 ? 'activeClass' : 'errorClass']">
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem dolore dolor libero quas debitis. Deserunt
+        consequatur doloribus incidunt velit iusto molestiae, autem qui quisquam in omnis libero expedita nisi beatae!
+      </p>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js" type="application/javascript"></script>
+    <script type="application/javascript">
+      new Vue({
+        el: '#app',
+        data: {
+          isActive: true,
+          isActive2: false,
+          isActive3: true,
+          isActive4: false
+        }
+      })
+    </script>
+</body>
+
+</html>
